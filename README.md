@@ -1,10 +1,9 @@
-# Bài t?p: Hi?n Th? Danh Sách Khách Hàng - JSTL JSP
+# Bài t?p: ?ng D?ng Calculator - Java Servlet & JSP
 
 ## N?i dung th?c hi?n:
-- **Thu m?c d? án \jsp-jstl-customer-list/\**:
-  - \pom.xml\: Khai báo thu vi?n Jakarta EE (\jakarta.servlet-api\ 6.0.0, \jakarta.servlet.jsp-api\ 3.1.1) và JSTL Core 3.0 (\jakarta.servlet.jsp.jstl\) tuong thích hoàn toàn v?i **Tomcat 10+**.
-  - \Customer.java\: Class JavaBean d?nh nghia thông tin khách hàng (tên, ngày sinh, d?a ch?, ?nh d?i di?n).
-  - \index.jsp\:
-    - Khai báo directive taglib JSTL chu?n Jakarta: \<%@taglib prefix="c" uri="jakarta.tags.core"%>'\.
-    - T?o danh sách khách hàng m?u (\List<Customer>\) và dính kèm vào \equest.setAttribute("customers", customerList)\.
-    - S? d?ng th? JSTL \<c:forEach>\ d? l?p qua danh sách và hi?n th? d? li?u b?ng HTML kèm ?nh avatar s?c nét.
+- **Thu m?c d? án \jsp-servlet-calculator/\**:
+  - \pom.xml\: Khai báo các thu vi?n Jakarta EE (\jakarta.servlet-api\ 6.0.0, \jakarta.servlet.jsp-api\ 3.1.1) tuong thích chu?n v?i **Tomcat 10+**.
+  - \Calculator.java\ (Model): Ð?nh nghia phuong th?c tinh \calculate(firstOperand, secondOperand, operator)\. B?n ra ngo?i l? \ArithmeticException\ khi \secondOperand == 0\.
+  - \CalculatorServlet.java\ (Controller): Nh?n tham s? t? form POST, x? lý ngo?i l? chia cho 0 ho?c l?i d?nh d?ng s?, sau dó chuy?n hu?ng request t?i \esult.jsp\.
+  - \index.jsp\: Form nh?p toán h?ng 1, toán h?ng 2 và ch?n phép tính (\+\, \-\, \*\, \/\).
+  - \esult.jsp\: Hi?n th? bi?u th?c k?t qu? tính toán ho?c thông báo l?i d? sinh d?ng.
