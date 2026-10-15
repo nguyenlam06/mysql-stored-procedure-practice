@@ -1,11 +1,12 @@
-# Bài t?p: Xây D?ng Landing Page (Microsoft Surface Style)
+# Bài t?p: Gi?i C?u T?p Chí Tr?c Tuy?n CreativeChronicle
 
 ## N?i dung th?c hi?n:
-- **Xây d?ng Landing Page b?ng Bootstrap 5 (\landing_page.html\ & \landing_style.css\)**:
-  - **Navbar**: Dùng component \
-avbar\, \
-avbar-expand-lg\ chu?n responsive tích h?p menu di?u hu?ng và nút ch?c nang.
-  - **Hero Banner**: Kh?i banner gi?i thi?u s?n ph?m ch? d?o (Surface Pro 9) v?i typography n?i b?t (\display-4\, \lead\) và nút kêu g?i hành d?ng (CTA).
-  - **Product Grid**: H? th?ng lu?i 4 c?t (\col-12 col-md-6 col-lg-3\) hi?n th? các th? danh m?c s?n ph?m (\card\, \card-body\, \adge\).
-  - **Feature Highlight**: Kh?i l?i ích d?ch v? 3 c?t (\col-md-4\) trình bày chính sách giao hàng, dùng th? và h? tr?.
-  - **Footer**: Chân trang chu?n hóa phân lo?i 4 nhóm liên k?t (\ow\, \col-6 col-md-3\).
+- **Thu m?c \creative_chronicle/\**:
+  - \magazine.html\ & \style.css\:
+    - Loa? b? 100% thu?c tính c? di?n \loat\ và \position: absolute\.
+    - **Author Meta-Info**: S? d?ng **Flexbox 1D** can gi?a theo chi?u d?c.
+    - **Mosaic Gallery**: Thi?t k? **CSS Grid 2D** b?t d?i x?ng mu?t mà trên Mobile.
+    - **Recommended Articles**: T?n d?ng h? th?ng Grid 12 c?t c?a **Bootstrap 5** (\.col-12 .col-md-6 .col-lg-3\).
+- **Báo cáo & Nh?t ký AI**:
+  - \layout_refactoring.md\: Phân tích tác h?i c?a Float/Absolute và câu tr? l?i v?n dáp.
+  - \i_prompt_log.md\: Ghi chép câu h?i tuong tác v?i AI.

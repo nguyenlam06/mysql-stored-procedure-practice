@@ -1,9 +1,9 @@
 # NH?T KÝ TRA C?U AI
 
-## Prompt 1: Flexbox vs CSS Grid cho Bento Box
-- **User:** "Nên dùng CSS Grid hay Flexbox d? làm ô span 2 rows 2 cols?"
-- **AI:** Ch?n CSS Grid vì h? tr? di?u khi?n 2D tr?c ti?p b?ng \grid-column: span\ và \grid-row: span\.
+## Prompt 1: CSS Grid Mosaic 2D
+- **User:** "Cách t?o Mosaic Gallery có 1 ?nh l?n bên trái chi?m 2 hàng và 2 ?nh nh? bên ph?i b?ng CSS Grid?"
+- **AI:** S? d?ng \grid-template-columns: 2fr 1fr\, gán \grid-row: 1 / 3\ cho ?nh chính và dùng \object-fit: cover\.
 
-## Prompt 2: Thu?c tính gap
-- **User:** "Uu di?m c?a gap so v?i margin?"
-- **AI:** \gap\ quy d?nh kho?ng cách gi?a các item mà không t?o vi?n th?a ? mép ngoài cùng.
+## Prompt 2: Bootstrap Breakpoints
+- **User:** "Class Bootstrap d? 4 c?t trên Desktop, 2 c?t trên Tablet, 1 c?t trên Mobile?"
+- **AI:** Dùng \col-12 col-md-6 col-lg-3\.
