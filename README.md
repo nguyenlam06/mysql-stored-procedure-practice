@@ -1,6 +1,6 @@
-# Bài th?c hành HTML & CSS Base Practice
+# Bài t?p: Nhúng CSS vào trang HTML
 
-## N?i dung bài th?c hành CSS:
-- Th?c hành d?nh d?ng van b?n b?ng CSS (color, ont-family, ont-size).
-- Ð?nh d?ng du?ng vi?n (order) và kho?ng cách l? trong (padding) cho các th? <p>.
-- Ð?nh d?ng riêng bi?t cho ph?n t? b?ng cách s? d?ng Selector Id (#element1).
+## N?i dung th?c hi?n:
+- **Ph?n 1 (Inline Style)**: Nhúng CSS tr?c ti?p thông qua thu?c tính \style\ c?a th? HTML.
+- **Ph?n 2 (Internal Style)**: Ð?nh d?ng th? HTML b?ng th? \<style>\ n?m trong ph?n \<head>\.
+- **Ph?n 3 (External Style)**: Tách riêng file \style.css\ và nhúng vào HTML thông qua th? \<link rel="stylesheet" href="style.css">\.

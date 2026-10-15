@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Th?c hành Nhúng CSS vào trang HTML</title>
+    
+    <!-- Ph?n 3: External Style (Nhúng file CSS t? bên ngoài) -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Ph?n 2: Internal Style (Vi?t CSS trong th? <style> thu?c <head>) -->
+    <style>
+        .internal-title {
+            color: purple;
+            font-size: 24px;
+        }
+
+        .internal-text {
+            color: teal;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PH?N 1: INLINE STYLE (Nhúng tr?c ti?p vào thu?c tính style c?a th? HTML) -->
+    <section>
+        <h1 style="color: red; font-size: 24px;">Tiêu d? 1 (Inline Style)</h1>
+        <p style="color: blue; font-size: 16px;">Ðo?n van b?n s? d?ng Inline Style d? thay d?i màu s?c.</p>
+    </section>
+
+    <hr>
+
+    <!-- PH?N 2: INTERNAL STYLE (S? d?ng CSS khai báo trong <style>) -->
+    <section>
+        <h1 class="internal-title">Tiêu d? 2 (Internal Style)</h1>
+        <p class="internal-text">Ðo?n van b?n s? d?ng Internal Style d? thay d?i màu s?c.</p>
+    </section>
+
+    <hr>
+
+    <!-- PH?N 3: EXTERNAL STYLE (S? d?ng CSS khai báo ? file style.css) -->
+    <section>
+        <h1 class="external-title">Tiêu d? 3 (External Style)</h1>
+        <p class="external-text">Ðo?n van b?n s? d?ng External Style d? thay d?i màu s?c.</p>
+    </section>
+
+</body>
+</html>
