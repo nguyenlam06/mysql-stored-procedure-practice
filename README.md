@@ -1,10 +1,12 @@
-# Bài t?p: T?o Layout V?i Responsive Web Design (RWD)
+# Bài t?p: Phát Tri?n Trang Web Xem Ho?t Hình Tr?c Tuy?n
 
 ## N?i dung th?c hi?n:
-- **Xây d?ng b? c?c trang web b?ng th? \<div>\ (\wd_layout.html\ & \wd_style.css\)**:
-  - Kh?i Header, Thanh Menu di?u hu?ng, Kh?i n?i dung 3 c?t (Sidebar trái, Content gi?a, Sidebar ph?i) và Footer.
-- **Ki thu?t Responsive Web Design (RWD)**:
-  - S? d?ng **CSS Flexbox** giúp các kh?i linh ho?t t? di?u ch?nh kích thu?c trên màn hình Desktop l?n.
-  - S? d?ng **Media Queries (\@media\)**:
-    - Màn hình Tablet (<= 768px): C?t Content chi?m 100% chi?u r?ng, 2 Sidebar d?y xu?ng hàng du?i chia dôi.
-    - Màn hình Mobile (<= 480px): T?t c? các kh?i (Nav, Content, Sidebars) x?p ch?ng thành 1 c?t duy nh?t d? quan sát trên di?n tho?i.
+- **C?u trúc HTML5 chu?n layout (\cartoon_website.html\)**:
+  - \<header>\: Logo bên trái, ô tìm ki?m phim bên ph?i.
+  - \<nav class="head-link">\: Thanh di?u hu?ng các danh m?c phim.
+  - \<aside class="left-content">\: Danh sách các t?p phim ho?t hình có s?n.
+  - \<main class="right-content">\: Trình chi?u video chính b?ng th? \<iframe>\ nhúng YouTube (ho?c th? \<video>\ HTML5).
+  - \<footer>\: Chân trang thông tin b?n quy?n.
+- **Trang trí & T?i uu CSS (\cartoon_style.css\)**:
+  - **M?c Trung Bình**: S? d?ng \position: fixed\ gi? c? d?nh Header khi cu?n trang; xóa g?ch chân link và t?o hi?u ?ng d?i màu/bôi d?m khi hover.
+  - **M?c Nâng Cao (RWD)**: S? d?ng Media Queries (\@media\) t? d?ng chuy?n d?i b? c?c 1 c?t linh ho?t trên màn hình di?n tho?i/máy tính b?ng.
