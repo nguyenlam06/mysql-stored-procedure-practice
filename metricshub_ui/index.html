@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MetricsHub - Dashboard Tái C?u Trúc</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 1. NAVBAR (Flexbox 1D) -->
+    <nav class="navbar-custom">
+        <div class="logo">MetricsHub</div>
+        <div class="nav-links">
+            <a href="#">Trang ch?</a>
+            <a href="#">T?ng quan</a>
+            <a href="#">SehrLangesDeutschesWortFürDashboard</a>
+            <a href="#">Liên h?</a>
+        </div>
+        <div class="user-profile">
+            <span class="avatar">NL</span>
+            <span>Nguyên Lâm</span>
+        </div>
+    </nav>
+
+    <!-- 2. DASHBOARD BENTO BOX (CSS Grid 2D) -->
+    <main class="container-fluid my-4">
+        <h2 class="mb-3 fw-bold text-secondary">Bento Box Metrics Dashboard</h2>
+        
+        <div class="bento-grid">
+            <div class="widget widget-a">
+                <h3>Chart A (Báo cáo doanh thu)</h3>
+                <p>Chi?m 2 c?t x 2 hàng trong B? c?c Bento</p>
+            </div>
+            <div class="widget">
+                <h3>Chart B</h3>
+                <p>Traffic ngu?n vào</p>
+            </div>
+            <div class="widget">
+                <h3>Chart C</h3>
+                <p>T? l? chuy?n d?i</p>
+            </div>
+            <div class="widget widget-d">
+                <h3>Chart D (Ngu?i dùng ho?t d?ng)</h3>
+                <p>Chi?m 2 c?t ngang</p>
+            </div>
+            <div class="widget">
+                <h3>Chart E</h3>
+                <p>Ch? s? hài lòng (NPS)</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- 3. PRICING SECTION (Bootstrap Grid 12 c?t) -->
+    <section class="container my-5">
+        <h2 class="text-center fw-bold mb-4">B?ng Giá D?ch V?</h2>
+        <div class="row g-4">
+            <div class="col-12 col-md-4">
+                <div class="card h-100 shadow-sm border-primary">
+                    <div class="card-body text-center">
+                        <h4 class="card-title fw-bold text-primary">Gói Co B?n</h4>
+                        <h2 class="my-3"><small class="fs-6 text-muted">/tháng</small></h2>
+                        <p class="card-text">Dành cho cá nhân và d? án nh? v?a kh?i ch?y.</p>
+                        <button class="btn btn-outline-primary w-100 mt-3">Ðang Ký Ngay</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+                <div class="card h-100 shadow-sm border-success bg-light">
+                    <div class="card-body text-center">
+                        <span class="badge bg-success mb-2">Ph? Bi?n Nh?t</span>
+                        <h4 class="card-title fw-bold text-success">Gói Nâng Cao</h4>
+                        <h2 class="my-3"><small class="fs-6 text-muted">/tháng</small></h2>
+                        <p class="card-text">Dành cho doanh nghi?p dang tang tru?ng nhanh.</p>
+                        <button class="btn btn-success w-100 mt-3">Tr?i Nghi?m Dùng Th?</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+                <div class="card h-100 shadow-sm border-dark">
+                    <div class="card-body text-center">
+                        <h4 class="card-title fw-bold text-dark">Gói Doanh Nghi?p</h4>
+                        <h2 class="my-3"><small class="fs-6 text-muted">/tháng</small></h2>
+                        <p class="card-text">Ð?y d? tính nang nâng cao và h? tr? 24/7.</p>
+                        <button class="btn btn-dark w-100 mt-3">Liên H? Tu V?n</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
