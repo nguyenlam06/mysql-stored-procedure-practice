@@ -1,9 +1,9 @@
-# Bài th?c hành: T?o Menu D?c (Vertical Dropdown Menu)
+# Bài th?c hành: T?o Menu Ngang (Horizontal Dropdown Navbar)
 
 ## N?i dung th?c hi?n:
-- **T?o c?u trúc danh sách l?ng nhau (\ertical_menu.html\)**: S? d?ng th? \<div id="menu">\ k?t h?p các danh sách \<ul>\ và \<li>\ da c?p.
-- **T?o hi?u ?ng CSS Dropdown (\styles.css\)**:
-  - Xóa padding/margin m?c d?nh c?a trình duy?t.
-  - Ð?nh d?ng các m?c menu v?i \position: relative\, màu n?n den, ch? tr?ng và d?i sang màu d? khi di chu?t qua (\:hover\).
-  - ?n menu con b?ng \isibility: hidden\ cùng \position: absolute\.
-  - Hi?n th? menu con sang bên ph?i (\left: 140px\) khi di chu?t vào menu cha b?ng b? ch?n \#menu ul li:hover ul { visibility: visible; }\.
+- **T?o c?u trúc thanh di?u hu?ng ngang (\horizontal_menu.html\)**: S? d?ng th? \<div id="menu">\ ch?a danh sách các liên k?t l?ng nhau 2 c?p.
+- **T?o hi?u ?ng CSS Dropdown ngang (\styles.css\)**:
+  - Ð?t thu?c tính \loat: left\ cho th? \#menu li\ d? các m?c menu s?p x?p theo hàng ngang.
+  - Tùy ch?nh kích thu?c cho menu c?p 1 (\width: 100px\) và menu con c?p 2 (\width: 200px\, can trái).
+  - S? d?ng \position: absolute\ và \	op: 30px\ d?nh v? v? trí xu?t hi?n c?a danh sách con ngay bên du?i menu cha.
+  - S? d?ng \isibility: hidden\ d? ?n menu con và hi?n th? l?i b?ng \#menu ul li:hover ul { visibility: visible; }\.
