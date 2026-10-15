@@ -1,12 +1,9 @@
-# Bài t?p: Phát Tri?n Trang Web Xem Ho?t Hình Tr?c Tuy?n
+# Bài th?c hành: S? d?ng Bootstrap Xây D?ng Form Login
 
 ## N?i dung th?c hi?n:
-- **C?u trúc HTML5 chu?n layout (\cartoon_website.html\)**:
-  - \<header>\: Logo bên trái, ô tìm ki?m phim bên ph?i.
-  - \<nav class="head-link">\: Thanh di?u hu?ng các danh m?c phim.
-  - \<aside class="left-content">\: Danh sách các t?p phim ho?t hình có s?n.
-  - \<main class="right-content">\: Trình chi?u video chính b?ng th? \<iframe>\ nhúng YouTube (ho?c th? \<video>\ HTML5).
-  - \<footer>\: Chân trang thông tin b?n quy?n.
-- **Trang trí & T?i uu CSS (\cartoon_style.css\)**:
-  - **M?c Trung Bình**: S? d?ng \position: fixed\ gi? c? d?nh Header khi cu?n trang; xóa g?ch chân link và t?o hi?u ?ng d?i màu/bôi d?m khi hover.
-  - **M?c Nâng Cao (RWD)**: S? d?ng Media Queries (\@media\) t? d?ng chuy?n d?i b? c?c 1 c?t linh ho?t trên màn hình di?n tho?i/máy tính b?ng.
+- **Tích h?p Bootstrap 5 CDN (\login_bootstrap.html\)**: Nhúng thành công thu vi?n Bootstrap CSS và JS Bundle t? CDN.
+- **Xây d?ng giao di?n Ðang nh?p (\login_bootstrap.html\ & \styles.css\)**:
+  - Logo Bootstrap \ootstrap.png\ d?t ? d?u form.
+  - Các ô nh?p thông tin Email và Password du?c ghép kh?p bo góc li?n nhau qua d?nh d?ng CSS \order-radius\.
+  - Checkbox 'Remember me' và nút Submit full width \w-100\ / \tn-primary\.
+  - Can gi?a toàn b? giao di?n theo chi?u ngang và d?c b?ng CSS Flexbox (\lign-items: center\, \justify-content: center\).
