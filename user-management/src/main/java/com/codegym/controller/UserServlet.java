@@ -73,6 +73,12 @@ public class UserServlet extends HttpServlet {
                 case "sort":
                     listUserSortedByName(request, response);
                     break;
+                case "test-without-tran":
+                    testWithoutTran(request, response);
+                    break;
+                case "test-use-tran":
+                    testUseTran(request, response);
+                    break;
                 default:
                     listUser(request, response);
                     break;
@@ -80,6 +86,18 @@ public class UserServlet extends HttpServlet {
         } catch (Exception ex) {
             throw new ServletException(ex);
         }
+    }
+
+    private void testWithoutTran(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        userDAO.insertUpdateWithoutTransaction();
+        System.out.println("Ðã ch?y xong hàm testWithoutTran. Hãy ki?m tra database Employee!");
+        response.getWriter().println("Executed insertUpdateWithoutTransaction(). Check Console output and MySQL Employee table.");
+    }
+
+    private void testUseTran(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        userDAO.insertUpdateUseTransaction();
+        System.out.println("Hoàn t?t g?i hàm testUseTran!");
+        response.getWriter().println("Executed insertUpdateUseTransaction(). Check Console output and MySQL Employee table.");
     }
 
     private void listUser(HttpServletRequest request, HttpServletResponse response)

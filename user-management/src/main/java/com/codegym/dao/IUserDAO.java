@@ -14,4 +14,5 @@ public interface IUserDAO {
     public List<User> selectAllUsersSortedByName();
     public void addUserTransaction(User user, int[] permissionIds) throws SQLException;
     public void insertUpdateWithoutTransaction() throws SQLException;
+    public void insertUpdateUseTransaction() throws SQLException;
 }

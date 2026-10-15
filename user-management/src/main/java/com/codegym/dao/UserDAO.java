@@ -231,11 +231,9 @@ public class UserDAO implements IUserDAO {
              PreparedStatement psInsert = conn.prepareStatement(SQL_INSERT);
              PreparedStatement psUpdate = conn.prepareStatement(SQL_UPDATE)) { 
              
-            // 1. Xoá b?ng cu và t?o l?i b?ng m?i làm s?ch d? li?u
             statement.execute(SQL_TABLE_DROP);
             statement.execute(SQL_TABLE_CREATE);
              
-            // 2. Ch?y t?p l?nh Insert (Chèn 2 nhân viên)
             psInsert.setString(1, "Quynh");
             psInsert.setBigDecimal(2, new BigDecimal(10));
             psInsert.setTimestamp(3, Timestamp.valueOf(LocalDateTime.now()));
@@ -246,7 +244,6 @@ public class UserDAO implements IUserDAO {
             psInsert.setTimestamp(3, Timestamp.valueOf(LocalDateTime.now()));
             psInsert.execute();
 
-            // 3. Ch?y t?p l?nh Update (C? tình t?o l?i ném ra Exception)
             psUpdate.setBigDecimal(2, new BigDecimal(999.99));
             psUpdate.setString(2, "Quynh");
             
@@ -254,6 +251,44 @@ public class UserDAO implements IUserDAO {
             
         } catch (Exception e) {
             System.out.println("Ðã b?t du?c l?i trong quá trình th?c thi SQL (Non-Transaction):");
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void insertUpdateUseTransaction() {
+        try (Connection conn = getConnection();
+             Statement statement = conn.createStatement();
+             PreparedStatement psInsert = conn.prepareStatement(SQL_INSERT);
+             PreparedStatement psUpdate = conn.prepareStatement(SQL_UPDATE)) {
+
+            statement.execute(SQL_TABLE_DROP);
+            statement.execute(SQL_TABLE_CREATE);
+
+            conn.setAutoCommit(false); 
+
+            psInsert.setString(1, "Quynh");
+            psInsert.setBigDecimal(2, new BigDecimal(10));
+            psInsert.setTimestamp(3, Timestamp.valueOf(LocalDateTime.now()));
+            psInsert.execute();
+
+            psInsert.setString(1, "Ngan");
+            psInsert.setBigDecimal(2, new BigDecimal(20));
+            psInsert.setTimestamp(3, Timestamp.valueOf(LocalDateTime.now()));
+            psInsert.execute();
+
+            // S?a l?i index gán tham s? chính xác
+            psUpdate.setBigDecimal(1, new BigDecimal(999.99));
+            psUpdate.setString(2, "Quynh");
+            psUpdate.execute();
+
+            conn.commit();
+            conn.setAutoCommit(true);
+            System.out.println("Transaction hoàn t?t và du?c commit thành công!");
+
+        } catch (Exception e) {
+            System.out.println("L?i x?y ra, Transaction s? t? d?ng hu? b? (rollback) khi dóng k?t n?i!");
+            System.out.println(e.getMessage());
             e.printStackTrace();
         }
     }
