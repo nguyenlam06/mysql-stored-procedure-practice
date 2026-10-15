@@ -1,16 +1,15 @@
-# Bài th?c hành MySQL Trigger, View, Stored Procedure & Parameters
+# Bài t?p: View, Index, Stored Procedure (Database: demo)
 
 ## N?i dung th?c hi?n:
-1. **MySQL Trigger**:
-   - T?o CSDL company và b?ng employees.
-   - T?o Trigger update_department (BEFORE INSERT) t? d?ng phân b? department d?a theo m?c luong (salary):
-     - salary >= 5000: Management
-     - salary >= 3000: Sales
-     - Còn l?i: Support
-   - Chèn d? li?u th? nghi?m d? xác nh?n Trigger ho?t d?ng t? d?ng.
-
-2. **MySQL View**:
-   - T?o, c?p nh?t (CREATE OR REPLACE VIEW) và xóa View customer_views.
-
-3. **Stored Procedure & Parameters**:
-   - S? d?ng các lo?i tham s? IN, OUT, INOUT trong Stored Procedure.
+1. **T?o CSDL & B?ng Products**: T?o CSDL demo, b?ng Products và chèn 5 b?n ghi m?u.
+2. **Index & Performance Tuning**:
+   - T?o Unique Index idx_productCode trên c?t productCode.
+   - T?o Composite Index idx_name_price trên 2 c?t productName và productPrice.
+   - Phân tích hi?u nang b?ng l?nh EXPLAIN tru?c và sau khi t?o Index.
+3. **View**:
+   - T?o View w_products, c?p nh?t View v?i CREATE OR REPLACE VIEW và xóa View v?i DROP VIEW.
+4. **Stored Procedure**:
+   - getAllProducts(): L?y t?t c? s?n ph?m.
+   - ddNewProduct(...): Thêm s?n ph?m m?i.
+   - updateProductById(...): C?p nh?t s?n ph?m theo Id.
+   - deleteProductById(...): Xóa s?n ph?m theo Id.
