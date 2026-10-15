@@ -1,9 +1,9 @@
-# NH?T KÝ TRA C?U VÀ TUONG TÁC AI
+# NH?T KÝ TRA C?U AI (AI PROMPT LOG)
 
-## Prompt 1: Truy v?n dung lu?ng trong MySQL
-- **Prompt:** "Làm cách nào truy v?n information_schema.TABLES l?y Data Length và Index Length tính theo MB?"
-- **K?t qu?:** Dùng phép chia data_length / (1024 * 1024) và index_length / (1024 * 1024).
+## Prompt 1: Covering Index & Tác h?i v?i h? th?ng IoT
+- **User:** "Khái ni?m Covering Index là gì? T?i sao nhét quá nhi?u c?t vào Index l?i gây th?m h?a cho h? th?ng IoT INSERT liên t?c?"
+- **AI:** Covering Index giúp SELECT không c?n d?c Table g?c. Tuy nhiên v?i IoT, nó t?o ra Write Penalty r?t l?n do B-Tree b? phình to và t?n công rebalance.
 
-## Prompt 2: Cardinality và tác h?i Over-Indexing
-- **Prompt:** "T?i sao t?o Index B-Tree cho c?t BOOLEAN và TEXT l?i gây h?i d?n RAM và Disk Space?"
-- **K?t qu?:** C?t TEXT làm phình to B-Tree Node; c?t BOOLEAN có Cardinality th?p khi?n Index vô d?ng nhung v?n t?n chi phí c?p nh?t khi INSERT.
+## Prompt 2: Gi?i thích c?t Extra trong EXPLAIN
+- **User:** "S? khác bi?t c?a c?t Extra khi chuy?n t? Covering Index sang Lean Index?"
+- **AI:** C?t Extra m?t dòng Using index vì MySQL ph?i nh?y v? Clustered Index l?y các c?t còn l?i. Truy v?n v?n dùng 	ype: range nên v?n r?t t?i uu.
