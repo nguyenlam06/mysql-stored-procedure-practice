@@ -1,10 +1,12 @@
-# Bài t?p: Ð?nh d?ng van b?n v?i CSS (Text Formatting)
+# Bài t?p: T?o trang d?c truy?n ng?n (Short Story Web Page)
 
 ## N?i dung th?c hi?n:
-- **T?o trang tài li?u HTML (	ext_formatting.html)**: Trình bày tiêu d?, ph? d?, do?n van và câu trích d?n.
-- **S? d?ng các thu?c tính CSS d?nh d?ng ch? (	ext_style.css)**:
-  - \color\: Ð?i màu s?c cho các thành ph?n van b?n.
-  - \ont-size\: Tùy ch?nh kích thu?c font ch? cho t?ng th?.
-  - \ont-style\: T?o ch? in nghiêng cho ph? d? và trích d?n.
-  - \	ext-align\: Can gi?a tiêu d?/trích d?n và can d?u (justify) cho do?n van.
-  - \	ext-indent\: Th?t lùi dòng d?u tiên c?a do?n van b?n.
+- **T?o trang d?c truy?n HTML (\short_story.html\)**:
+  - Ð?t ?nh truy?n ? d?u trang (\<img>\).
+  - S? d?ng th? \<h1>\ cho tiêu d? truy?n và th? \<h5>\ cho t?ng m?c l?c chuong.
+  - T?o liên k?t n?i b? (\href="#chuong-x"\) giúp nh?y d?n t?ng chuong truy?n tuong ?ng.
+- **Trang trí CSS (\styles.css\)**:
+  - Can gi?a và ch?n ki?u ch? (\ont-family\, \color\) cho tiêu d?.
+  - Ðóng khung, ch?n màu n?n (\ackground-color\) và thêm kho?ng d?m (\padding\) cho m?c l?c.
+  - T?o hi?u ?ng \:hover\ r?c r? và chuy?n d?ng nh? cho các link m?c l?c.
+  - Giãn dòng (\line-height: 1.8\), th?t lùi dòng d?u (\	ext-indent: 30px\) và can d?u l? hai bên (\	ext-align: justify\) cho van b?n truy?n.
