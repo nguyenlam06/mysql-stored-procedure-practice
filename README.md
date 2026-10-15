@@ -1,19 +1,18 @@
-# Bài t?p: ?ng D?ng Qu?n Lý S?n Ph?m (MVC Architecture)
+# Bài th?c hành: Qu?n Lý User S? D?ng JSP-Servlet-JDBC-MySQL (MVC Architecture)
 
 ## N?i dung th?c hi?n:
-- **Thu m?c d? án \product-management/\**:
-  - \pom.xml\: Khai báo thu vi?n Jakarta EE (\jakarta.servlet-api\ 6.0.0, \jakarta.servlet.jsp-api\ 3.1.1) và JSTL Core 3.0 (\jakarta.servlet.jsp.jstl\) tuong thích chu?n v?i **Tomcat 10+**.
+- **Thu m?c d? án \user-management/\**:
+  - \pom.xml\: Khai báo Jakarta Servlet API, JSP API, JSTL Core 3.0 và \mysql-connector-j\ 8.3.0 tuong thích **Tomcat 10+**.
+  - **Co s? d? li?u MySQL**: S? d?ng Database \demo\, b?ng \users\ (id, name, email, country).
   - **T?ng Model (\com.codegym.model\)**:
-    - \Product.java\: Ð?nh nghia th?c th? s?n ph?m (id, name, price, description, manufacturer).
-  - **T?ng Service (\com.codegym.service\)**:
-    - \ProductService.java\: Interface khai báo các phuong th?c CRUD và tìm ki?m theo tên (\indByName\).
-    - \ProductServiceImpl.java\: L?p tri?n khai nghi?p v? v?i co s? d? li?u gi? l?p (\Map<Integer, Product>\).
+    - \User.java\: Th?c th? ngu?i dùng tuong ?ng v?i b?ng \users\ trong CSDL.
+  - **T?ng DAO (\com.codegym.dao\)**:
+    - \IUserDAO.java\: Interface khai báo các hàm CRUD.
+    - \UserDAO.java\: Th?c thi JDBC Driver k?t n?i MySQL (\DriverManager.getConnection\), th?c thi các câu l?nh \PreparedStatement\ (\INSERT\, \SELECT\, \UPDATE\, \DELETE\).
   - **T?ng Controller (\com.codegym.controller\)**:
-    - \ProductServlet.java\: Ði?u hu?ng các thao tác GET/POST theo tham s? \ction\ (\create\, \edit\, \delete\, \iew\, \search\, \list\).
-  - **T?ng View (\src/main/webapp/\)**:
-    - \product/list.jsp\: B?ng danh sách s?n ph?m k?t h?p thanh tìm ki?m theo tên và th? JSTL \<c:forEach>\.
-    - \product/create.jsp\: Giao di?n thêm m?i s?n ph?m.
-    - \product/edit.jsp\: Giao di?n ch?nh s?a thông tin s?n ph?m.
-    - \product/delete.jsp\: Trang xác nh?n xóa s?n ph?m.
-    - \product/view.jsp\: Trang hi?n th? thông tin chi ti?t s?n ph?m.
-    - \error-404.jsp\: Trang báo l?i 404 khi s?n ph?m không t?n t?i.
+    - \UserServlet.java\: X? lý di?u hu?ng request qua URL \/users\.
+  - **T?ng View (\src/main/webapp/user/\)**:
+    - \list.jsp\: Hi?n th? b?ng danh sách User l?y tr?c ti?p t? CSDL MySQL.
+    - \create.jsp\: Form thêm m?i User.
+    - \edit.jsp\: Form c?p nh?t thông tin User.
+    - \delete.jsp\: Trang xác nh?n xóa User.
