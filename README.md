@@ -1,10 +1,17 @@
-# Bài th?c hành: Ðóng Gói Thu Vi?n Java (.jar Packaging & Dependency System Scope)
+# Case Study: ?ng d?ng Qu?n Lý Ghi Chú iNotes (Strategy Pattern Architecture)
 
 ## N?i dung th?c hi?n:
-- **Thu m?c \math-lib/\ (D? án Thu vi?n)**:
-  - Khai báo \com.codegym.Calculator\ ch?a các hàm static \sum\, \sub\, \mul\, và \divide\.
-  - Ðóng gói thành công file thu vi?n \math-lib-1.0-SNAPSHOT.jar\ b?ng l?nh \mvn clean package\.
-- **Thu m?c \calculator-app/\ (D? án S? d?ng Thu vi?n)**:
-  - Copy file thu vi?n vào thu m?c \lib/math-lib.jar\.
-  - Nhúng dependency vào \pom.xml\ v?i c?u hình \<scope>system</scope>\ và \<systemPath>\/lib/math-lib.jar</systemPath>\.
-  - Th?c thi l?p \com.codegym.Main\ g?i tr?c ti?p các phuong th?c tinh t? file \.jar\ thành công.
+- **Thu m?c \inotes-app/\**:
+  - **Co s? d? li?u MySQL (\inotes_db\)**:
+    - B?ng \
+ote_type\ (id, name, description).
+    - B?ng \
+otes\ (id, title, content, type_id - Khóa ngo?i).
+  - **Thi?t k? Pattern (\Strategy Pattern\)**:
+    - Interface \NoteStrategy\: Quy chu?n t?p h?p giao th?c luu tr? (\save\, \delete\, \indAll\, \search\).
+    - L?p \NoteDBStrategy\: Th?c thi k?t n?i ghi nh?n d? li?u trên MySQL qua JDBC.
+    - L?p \NoteFileStrategy\: Th?c thi luu d? li?u ra File Flat Text (\
+otes.txt\) v?i d?nh d?ng phân tách \id|title|content|typeId\.
+    - L?p \NoteManagement\: Context linh ho?t chuy?n d?i t?ng luu tr? lúc Runtime (\setStrategy\).
+  - **MVC Interface**:
+    - Dashboard danh sách ghi chú, form t?o m?i, c?p nh?t, chi ti?t và nút chuy?n d?i linh ho?t t?ng luu tr? Database/File.
