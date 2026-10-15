@@ -1,6 +1,10 @@
-# Bài t?p: Nhúng CSS vào trang HTML
+# Bài t?p: Ð?nh d?ng van b?n v?i CSS (Text Formatting)
 
 ## N?i dung th?c hi?n:
-- **Ph?n 1 (Inline Style)**: Nhúng CSS tr?c ti?p thông qua thu?c tính \style\ c?a th? HTML.
-- **Ph?n 2 (Internal Style)**: Ð?nh d?ng th? HTML b?ng th? \<style>\ n?m trong ph?n \<head>\.
-- **Ph?n 3 (External Style)**: Tách riêng file \style.css\ và nhúng vào HTML thông qua th? \<link rel="stylesheet" href="style.css">\.
+- **T?o trang tài li?u HTML (	ext_formatting.html)**: Trình bày tiêu d?, ph? d?, do?n van và câu trích d?n.
+- **S? d?ng các thu?c tính CSS d?nh d?ng ch? (	ext_style.css)**:
+  - \color\: Ð?i màu s?c cho các thành ph?n van b?n.
+  - \ont-size\: Tùy ch?nh kích thu?c font ch? cho t?ng th?.
+  - \ont-style\: T?o ch? in nghiêng cho ph? d? và trích d?n.
+  - \	ext-align\: Can gi?a tiêu d?/trích d?n và can d?u (justify) cho do?n van.
+  - \	ext-indent\: Th?t lùi dòng d?u tiên c?a do?n van b?n.
