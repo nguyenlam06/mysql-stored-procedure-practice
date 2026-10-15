@@ -1,11 +1,10 @@
-# Bài th?c hành: Tái C?u Trúc Giao Di?n MetricsHub (Layout Strategy)
+# Bài t?p: T?o Gallery Ðon Gi?n S? D?ng Bootstrap
 
 ## N?i dung th?c hi?n:
-- **Thu m?c \metricshub_ui/\**:
-  - \index.html\ & \style.css\:
-    - **Navbar**: S? d?ng **Flexbox** linh ho?t dàn hàng ngang 1D.
-    - **Bento Dashboard**: S? d?ng **CSS Grid** b? trí 2D b?t d?i x?ng v?i \grid-column: span\ và \grid-row: span\.
-    - **Pricing Section**: T?n d?ng h? th?ng Grid 12 c?t c?a **Bootstrap 5** (\.col-12 .col-md-4\).
-- **File gi?i trình & nh?t ký AI**:
-  - \layout_strategy.md\: Gi?i thích tri?t lý l?a ch?n vu khí dàn trang.
-  - \i_prompt_log.md\: Nh?t ký tra c?u AI trong quá trình thi?t k?.
+- **Xây d?ng Thu vi?n ?nh Responsive (\ootstrap_gallery.html\ & \gallery_style.css\)**:
+  - Tích h?p thu vi?n Bootstrap 5 qua CDN.
+  - Áp d?ng h? th?ng lu?i Bootstrap 12 c?t (\.row\ & \.col-*\):
+    - **Desktop (\col-lg-3\)**: Hi?n th? 4 ?nh/dòng (12 / 3 = 4).
+    - **Tablet (\col-sm-6\)**: Hi?n th? 2 ?nh/dòng (12 / 6 = 2).
+    - **Mobile (\col-12\)**: Hi?n th? 1 ?nh/dòng (12 / 12 = 1).
+  - T?n d?ng các utility class c?a Bootstrap nhu \container\, \shadow-sm\, \g-4\ (t?o kho?ng cách chu?n gi?a các ô ?nh).
