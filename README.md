@@ -1,11 +1,9 @@
-# Bài th?c hành: S? d?ng CSS Box Model
+# Bài th?c hành: T?o Menu D?c (Vertical Dropdown Menu)
 
 ## N?i dung th?c hi?n:
-- **T?o trang HTML (\ox_model.html\)** th?c hành mô hình h?p (Box Model).
-- **Ð?nh d?ng th? \<div class="boxmodel">\**:
-  - \width: 800px\, \margin: 0 auto\ (can gi?a trang).
-  - Vi?n \order: 10px solid\ ph?i 4 màu (\order-color: chartreuse aqua blue blueviolet\).
-  - Kho?ng d?m \padding: 10px\.
-- **Ð?nh d?ng các th? \<p>\**:
-  - Vi?n ch?m vi?n t?i \order: 3px dotted darkred\ và \padding: 10px\.
-  - Tách kho?ng cách l? du?i tang d?n b?ng \margin-bottom\ theo ID (\#boxmodel1\: 20px, \#boxmodel2\: 40px, \#boxmodel3\: 60px).
+- **T?o c?u trúc danh sách l?ng nhau (\ertical_menu.html\)**: S? d?ng th? \<div id="menu">\ k?t h?p các danh sách \<ul>\ và \<li>\ da c?p.
+- **T?o hi?u ?ng CSS Dropdown (\styles.css\)**:
+  - Xóa padding/margin m?c d?nh c?a trình duy?t.
+  - Ð?nh d?ng các m?c menu v?i \position: relative\, màu n?n den, ch? tr?ng và d?i sang màu d? khi di chu?t qua (\:hover\).
+  - ?n menu con b?ng \isibility: hidden\ cùng \position: absolute\.
+  - Hi?n th? menu con sang bên ph?i (\left: 140px\) khi di chu?t vào menu cha b?ng b? ch?n \#menu ul li:hover ul { visibility: visible; }\.
