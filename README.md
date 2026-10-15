@@ -1,13 +1,11 @@
-# Bài th?c hành: MySQL JDBC Transaction (User Management)
+# Bài th?c hành: Th?c thi SQL Không S? D?ng Transaction (Non-Transaction)
 
 ## N?i dung th?c hi?n:
 - **Thu m?c d? án \user-management/\**:
-  - **Co s? d? li?u MySQL**: T?o các b?ng m?i \permission\ và \user_permission\ (b?ng trung gian gán quy?n ngu?i dùng).
+  - **Co s? d? li?u MySQL**: Thêm b?ng \Employee\ (id, name, salary, created_Date).
   - \IUserDAO.java\ & \UserDAO.java\:
-    - Tri?n khai phuong th?c \ddUserTransaction(User user, int[] permissionIds)\.
-    - S? d?ng \connection.setAutoCommit(false)\ d? b?t d?u m?t Transaction.
-    - Th?c thi chèn User vào b?ng \users\ v?i \Statement.RETURN_GENERATED_KEYS\ d? l?y ID sinh t? d?ng.
-    - Duy?t m?ng \permissionIds\ d? chèn các quy?n tuong ?ng vào b?ng \user_permission\.
-    - G?i \connection.commit()\ n?u t?t c? thao tác thành công ho?c \connection.rollback()\ trong kh?i \catch\ n?u có s? c? d? b?o d?m tính toàn v?n d? li?u.
-  - \UserServlet.java\: Ti?p nh?n m?ng \permissions\ g?i t? form t?o m?i và chuy?n d? li?u t?i \ddUserTransaction\.
-  - \user/create.jsp\: B? sung danh sách Checkbox phân quy?n (\Add\, \Edit\, \Delete\, \View\).
+    - Tri?n khai phuong th?c \insertUpdateWithoutTransaction()\.
+    - Th?c thi xóa/t?o l?i b?ng \Employee\, chèn 2 b?n ghi cho "Quynh" và "Ngan" thành công.
+    - C? tình thi?t l?p sai ch? s? tham s? câu l?nh Update làm phát sinh l?i \SQLException: No value specified for parameter 1\.
+    - Minh ch?ng cho vi?c do không dùng Transaction (\uto-commit=true\ m?c d?nh), 2 b?n ghi Insert v?n b? ghi nh?n vinh vi?n vào CSDL dù câu l?nh Update phía sau g?p s? c?.
+  - \UserServlet.java\: Thêm endpoint \/users?action=test-without-tran\ kích ho?t hàm ki?m th?.

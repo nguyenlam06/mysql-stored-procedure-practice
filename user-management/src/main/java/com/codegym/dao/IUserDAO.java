@@ -13,4 +13,5 @@ public interface IUserDAO {
     public List<User> searchByCountry(String country);
     public List<User> selectAllUsersSortedByName();
     public void addUserTransaction(User user, int[] permissionIds) throws SQLException;
+    public void insertUpdateWithoutTransaction() throws SQLException;
 }

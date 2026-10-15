@@ -1,12 +1,15 @@
 package com.codegym.dao;
 
 import com.codegym.model.User;
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +25,18 @@ public class UserDAO implements IUserDAO {
     private static final String UPDATE_USERS_SQL = "UPDATE users SET name = ?, email = ?, country = ? WHERE id = ?;";
     private static final String SEARCH_USERS_BY_COUNTRY = "SELECT * FROM users WHERE country LIKE ?;";
     private static final String SELECT_ALL_USERS_SORTED_BY_NAME = "SELECT * FROM users ORDER BY name ASC;";
+
+    private static final String SQL_INSERT = "INSERT INTO Employee (name, salary, created_Date) VALUES (?,?,?)";
+    private static final String SQL_UPDATE = "UPDATE Employee SET salary=? WHERE name=?";
+    private static final String SQL_TABLE_CREATE = "CREATE TABLE Employee"
+            + "("
+            + " id INT(11) AUTO_INCREMENT,"
+            + " name VARCHAR(100) NOT NULL,"
+            + " salary DECIMAL(15, 2) NOT NULL,"
+            + " created_Date TIMESTAMP,"
+            + " PRIMARY KEY (id)"
+            + ")";
+    private static final String SQL_TABLE_DROP = "DROP TABLE IF EXISTS Employee";
 
     public UserDAO() {}
 
@@ -159,11 +174,8 @@ public class UserDAO implements IUserDAO {
         
         try {
             connection = getConnection();
-            
-            // 1. T?t auto-commit d? b?t d?u m?t Transaction
             connection.setAutoCommit(false);
             
-            // 2. Chèn d? li?u vào b?ng users và c?u hình l?y l?i ID v?a t?o
             String insertUserSql = "INSERT INTO users (name, email, country) VALUES (?, ?, ?)";
             pstmtUser = connection.prepareStatement(insertUserSql, Statement.RETURN_GENERATED_KEYS);
             pstmtUser.setString(1, user.getName());
@@ -171,14 +183,12 @@ public class UserDAO implements IUserDAO {
             pstmtUser.setString(3, user.getCountry());
             pstmtUser.executeUpdate();
             
-            // 3. L?y ID c?a user v?a du?c chèn
             rs = pstmtUser.getGeneratedKeys();
             int userId = 0;
             if (rs.next()) {
                 userId = rs.getInt(1);
             }
             
-            // 4. Chèn d? li?u vào b?ng user_permission
             if (permissionIds != null && permissionIds.length > 0) {
                 String insertPermissionSql = "INSERT INTO user_permission (user_id, permission_id) VALUES (?, ?)";
                 pstmtAssignment = connection.prepareStatement(insertPermissionSql);
@@ -190,12 +200,10 @@ public class UserDAO implements IUserDAO {
                 }
             }
             
-            // 5. N?u m?i th? thành công, ti?n hành Commit
             connection.commit();
             System.out.println("Transaction dã du?c commit thành công!");
             
         } catch (SQLException e) {
-            // 6. N?u có l?i x?y ra ? b?t k? dâu, Rollback l?i toàn b? d? li?u
             try {
                 if (connection != null) {
                     connection.rollback();
@@ -206,7 +214,6 @@ public class UserDAO implements IUserDAO {
             }
             e.printStackTrace();
         } finally {
-            // 7. D?n d?p tài nguyên và b?t l?i auto-commit
             if (rs != null) rs.close();
             if (pstmtUser != null) pstmtUser.close();
             if (pstmtAssignment != null) pstmtAssignment.close();
@@ -214,6 +221,40 @@ public class UserDAO implements IUserDAO {
                 connection.setAutoCommit(true);
                 connection.close();
             }
+        }
+    }
+
+    @Override
+    public void insertUpdateWithoutTransaction() {
+        try (Connection conn = getConnection();
+             Statement statement = conn.createStatement();
+             PreparedStatement psInsert = conn.prepareStatement(SQL_INSERT);
+             PreparedStatement psUpdate = conn.prepareStatement(SQL_UPDATE)) { 
+             
+            // 1. Xoá b?ng cu và t?o l?i b?ng m?i làm s?ch d? li?u
+            statement.execute(SQL_TABLE_DROP);
+            statement.execute(SQL_TABLE_CREATE);
+             
+            // 2. Ch?y t?p l?nh Insert (Chèn 2 nhân viên)
+            psInsert.setString(1, "Quynh");
+            psInsert.setBigDecimal(2, new BigDecimal(10));
+            psInsert.setTimestamp(3, Timestamp.valueOf(LocalDateTime.now()));
+            psInsert.execute(); 
+            
+            psInsert.setString(1, "Ngan");
+            psInsert.setBigDecimal(2, new BigDecimal(20));
+            psInsert.setTimestamp(3, Timestamp.valueOf(LocalDateTime.now()));
+            psInsert.execute();
+
+            // 3. Ch?y t?p l?nh Update (C? tình t?o l?i ném ra Exception)
+            psUpdate.setBigDecimal(2, new BigDecimal(999.99));
+            psUpdate.setString(2, "Quynh");
+            
+            psUpdate.execute();
+            
+        } catch (Exception e) {
+            System.out.println("Ðã b?t du?c l?i trong quá trình th?c thi SQL (Non-Transaction):");
+            e.printStackTrace();
         }
     }
 }
