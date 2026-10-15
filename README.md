@@ -1,12 +1,8 @@
-# Bài t?p: G?i MySQL Stored Procedures t? JDBC (CallableStatement)
+# Bài t?p: Luy?n t?p MySQL JDBC Transaction (Rollback Verification)
 
 ## N?i dung th?c hi?n:
 - **Thu m?c d? án \user-management/\**:
-  - **Co s? d? li?u MySQL**:
-    - \get_all_users()\: Stored Procedure l?y toàn b? danh sách ngu?i dùng.
-    - \update_user(IN p_id, IN p_name, IN p_email, IN p_country)\: Stored Procedure c?p nh?t thông tin ngu?i dùng.
-    - \delete_user(IN p_id)\: Stored Procedure xóa ngu?i dùng theo ID.
-  - \IUserDAO.java\ & \UserDAO.java\:
-    - Khai báo và tri?n khai 3 phuong th?c: \getUserByProcedure()\, \updateUserProcedure(User user)\, \deleteUserProcedure(int id)\.
-    - S? d?ng \CallableStatement\ v?i cú pháp \{CALL <procedure_name>(...)}\ d? th?c thi tr?c ti?p các Stored Procedures trong CSDL MySQL.
-    - C?p nh?t các hàm chu?n \selectAllUsers()\, \updateUser()\, \deleteUser()\ chuy?n hu?ng g?i thông qua Stored Procedures.
+  - \UserDAO.java\:
+    - C?p nh?t phuong th?c \ddUserTransaction(User user, int[] permissionIds)\ c? tình vi?t sai tên c?t SQL (\invalid_column\) d? t?o ra s? c? \SQLException\.
+    - Th?c nghi?m vi?c ki?m soát Transaction qua kh?i \	ry-catch\: Khi câu l?nh chèn quy?n b? vang l?i, hàm \connection.rollback()\ du?c kích ho?t ngay l?p t?c.
+    - K?t qu? ki?m ch?ng trên CSDL MySQL: B?n ghi ngu?i dùng ? bu?c chèn tru?c dó cung b? hu? b? hoàn toàn, d?m b?o tính toàn v?n d? li?u chu?n ACID.

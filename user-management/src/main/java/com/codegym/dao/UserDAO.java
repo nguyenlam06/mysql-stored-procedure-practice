@@ -85,17 +85,17 @@ public class UserDAO implements IUserDAO {
 
     @Override
     public List<User> selectAllUsers() {
-        return getUserByProcedure(); // M?c d?nh chuy?n sang g?i Stored Procedure get_all_users()
+        return getUserByProcedure();
     }
 
     @Override
     public boolean deleteUser(int id) throws Exception {
-        return deleteUserProcedure(id); // G?i Stored Procedure delete_user()
+        return deleteUserProcedure(id);
     }
 
     @Override
     public boolean updateUser(User user) throws Exception {
-        return updateUserProcedure(user); // G?i Stored Procedure update_user()
+        return updateUserProcedure(user);
     }
 
     @Override
@@ -137,6 +137,9 @@ public class UserDAO implements IUserDAO {
         return users;
     }
 
+    // =======================================================
+    // HÀM ADD USER TRANSACTION C? TÌNH GÂY L?I SQL Ð? ROLLBACK
+    // =======================================================
     @Override
     public void addUserTransaction(User user, int[] permissionIds) throws SQLException {
         Connection connection = null;
@@ -146,8 +149,11 @@ public class UserDAO implements IUserDAO {
         
         try {
             connection = getConnection();
+            
+            // 1. T?t auto-commit d? b?t d?u Transaction
             connection.setAutoCommit(false);
             
+            // 2. Chèn d? li?u thành công vào b?ng users
             String insertUserSql = "INSERT INTO users (name, email, country) VALUES (?, ?, ?)";
             pstmtUser = connection.prepareStatement(insertUserSql, Statement.RETURN_GENERATED_KEYS);
             pstmtUser.setString(1, user.getName());
@@ -161,14 +167,15 @@ public class UserDAO implements IUserDAO {
                 userId = rs.getInt(1);
             }
             
+            // 3. C? TÌNH GÂY L?I SQL: Chèn vào c?t không t?n t?i 'invalid_column'
             if (permissionIds != null && permissionIds.length > 0) {
-                String insertPermissionSql = "INSERT INTO user_permission (user_id, permission_id) VALUES (?, ?)";
+                String insertPermissionSql = "INSERT INTO user_permission (user_id, invalid_column) VALUES (?, ?)";
                 pstmtAssignment = connection.prepareStatement(insertPermissionSql);
                 
                 for (int permissionId : permissionIds) {
                     pstmtAssignment.setInt(1, userId);
                     pstmtAssignment.setInt(2, permissionId);
-                    pstmtAssignment.executeUpdate();
+                    pstmtAssignment.executeUpdate(); // S? vang SQLException t?i dây!
                 }
             }
             
@@ -176,10 +183,11 @@ public class UserDAO implements IUserDAO {
             System.out.println("Transaction dã du?c commit thành công!");
             
         } catch (SQLException e) {
+            // 4. B?t l?i và th?c thi Rollback toàn b? d? li?u (k? c? bu?c chèn user ? bu?c 2)
             try {
                 if (connection != null) {
                     connection.rollback();
-                    System.out.println("Có l?i x?y ra! Transaction dã b? rollback.");
+                    System.out.println(">>> ÐÃ B?T ÐU?C L?I SQL! Transaction dã Rollback thành công, không có d? li?u nào b? luu vào CSDL.");
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -263,10 +271,6 @@ public class UserDAO implements IUserDAO {
             e.printStackTrace();
         }
     }
-
-    // ==========================================
-    // TH?C THI THAO TÁC QUA CALLABLE STATEMENT
-    // ==========================================
 
     @Override
     public List<User> getUserByProcedure() {
