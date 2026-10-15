@@ -1,12 +1,11 @@
-# Bài t?p: T?o trang d?c truy?n ng?n (Short Story Web Page)
+# Bài th?c hành: S? d?ng CSS Box Model
 
 ## N?i dung th?c hi?n:
-- **T?o trang d?c truy?n HTML (\short_story.html\)**:
-  - Ð?t ?nh truy?n ? d?u trang (\<img>\).
-  - S? d?ng th? \<h1>\ cho tiêu d? truy?n và th? \<h5>\ cho t?ng m?c l?c chuong.
-  - T?o liên k?t n?i b? (\href="#chuong-x"\) giúp nh?y d?n t?ng chuong truy?n tuong ?ng.
-- **Trang trí CSS (\styles.css\)**:
-  - Can gi?a và ch?n ki?u ch? (\ont-family\, \color\) cho tiêu d?.
-  - Ðóng khung, ch?n màu n?n (\ackground-color\) và thêm kho?ng d?m (\padding\) cho m?c l?c.
-  - T?o hi?u ?ng \:hover\ r?c r? và chuy?n d?ng nh? cho các link m?c l?c.
-  - Giãn dòng (\line-height: 1.8\), th?t lùi dòng d?u (\	ext-indent: 30px\) và can d?u l? hai bên (\	ext-align: justify\) cho van b?n truy?n.
+- **T?o trang HTML (\ox_model.html\)** th?c hành mô hình h?p (Box Model).
+- **Ð?nh d?ng th? \<div class="boxmodel">\**:
+  - \width: 800px\, \margin: 0 auto\ (can gi?a trang).
+  - Vi?n \order: 10px solid\ ph?i 4 màu (\order-color: chartreuse aqua blue blueviolet\).
+  - Kho?ng d?m \padding: 10px\.
+- **Ð?nh d?ng các th? \<p>\**:
+  - Vi?n ch?m vi?n t?i \order: 3px dotted darkred\ và \padding: 10px\.
+  - Tách kho?ng cách l? du?i tang d?n b?ng \margin-bottom\ theo ID (\#boxmodel1\: 20px, \#boxmodel2\: 40px, \#boxmodel3\: 60px).

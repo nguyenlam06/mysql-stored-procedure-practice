@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>S? d?ng Boxmodel</title>
+    <style>
+        /* Bu?c 2: B? ch?n class .boxmodel */
+        .boxmodel {
+            margin: 0 auto;
+            width: 800px;
+            border: 10px;
+            padding: 10px;
+            border-color: chartreuse aqua blue blueviolet;
+            border-style: solid;
+        }
+
+        /* Bu?c 3: B? ch?n d?nh d?ng cho th? p trong .boxmodel */
+        .boxmodel p {
+            border: 3px dotted darkred;
+            padding: 10px;
+        }
+
+        /* Bu?c 4: Các b? ch?n id quy d?nh margin-bottom */
+        #boxmodel1 {
+            margin-bottom: 20px;
+        }
+
+        #boxmodel2 {
+            margin-bottom: 40px;
+        }
+
+        #boxmodel3 {
+            margin-bottom: 60px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="boxmodel">
+        <p id="boxmodel1">Mô hình h?p trong CSS v? co b?n là m?t h?p bao quanh ph?n t? HTML.
+            Nó bao g?m: l? (margin), vi?n (border), ph?n d?m (padding) và n?i dung (content)</p>
+        <p id="boxmodel2">Mô hình h?p trong CSS v? co b?n là m?t h?p bao quanh ph?n t? HTML.
+            Nó bao g?m: l? (margin), vi?n (border), ph?n d?m (padding) và n?i dung (content)</p>
+        <p id="boxmodel3">Mô hình h?p trong CSS v? co b?n là m?t h?p bao quanh ph?n t? HTML.
+            Nó bao g?m: l? (margin), vi?n (border), ph?n d?m (padding) và n?i dung (content)</p>
+    </div>
+
+</body>
+</html>
