@@ -1,14 +1,11 @@
-# Bài t?p: ?ng D?ng Product Discount Calculator - Java Servlet
+# Bài th?c hành: ?ng D?ng T? Ði?n Ðon Gi?n - JSP
 
 ## N?i dung th?c hi?n:
-- **Thu m?c d? án \jsp-servlet-product-discount/\**:
+- **Thu m?c d? án \jsp-pure-dictionary/\**:
   - \pom.xml\: Khai báo các thu vi?n Jakarta EE (\jakarta.servlet-api\ 6.0.0, \jakarta.servlet.jsp-api\ 3.1.1) tuong thích chu?n v?i **Tomcat 10+**.
-  - \index.jsp\: Form giao di?n nh?n các thông tin:
-    - \description\: Mô t? s?n ph?m.
-    - \price\: Giá niêm y?t (List Price).
-    - \discount\: T? l? chi?t kh?u (%) (Discount Percent).
-    - Phuong th?c g?i data: \POST\ t?i endpoint \/display-discount\.
-  - \DiscountServlet.java\: Servlet nh?n request POST, th?c hi?n tính toán:
-    - \Discount Amount = List Price * Discount Percent * 0.01\
-    - \Discount Price = List Price - Discount Amount\
-    - Hi?n th? d?y d? thông tin mô t?, giá g?c, chi?t kh?u và giá sau cùng.
+  - \index.jsp\: Form tra c?u t? v?ng ti?ng Anh g?i d? li?u b?ng phuong th?c \POST\ t?i trang \dictionary.jsp\.
+  - \dictionary.jsp\: Trang x? lý tra c?u b?ng mã nhúng Java JSP:
+    - Kh?i t?o kho t? v?ng gi? l?p (\Map<String, String>\).
+    - Nh?n t? khóa qua \equest.getParameter("search")\.
+    - S? d?ng th? Scriptlet (\<% %>\) d? th?c hi?n tra c?u.
+    - S? d?ng th? Expression (\<%= %>\) d? xu?t k?t qu? nghia ti?ng Vi?t ho?c thông báo không tìm th?y tr?c ti?p ra HTML.
