@@ -1,17 +1,12 @@
-# Case Study: ?ng d?ng Qu?n Lý Ghi Chú iNotes (Strategy Pattern Architecture)
+# Bài Ki?m Tra Cu?i Module: Phát Tri?n ?ng D?ng Web Qu?n Lý S?n Ph?m (JSP, Servlet, JDBC)
 
 ## N?i dung th?c hi?n:
-- **Thu m?c \inotes-app/\**:
-  - **Co s? d? li?u MySQL (\inotes_db\)**:
-    - B?ng \
-ote_type\ (id, name, description).
-    - B?ng \
-otes\ (id, title, content, type_id - Khóa ngo?i).
-  - **Thi?t k? Pattern (\Strategy Pattern\)**:
-    - Interface \NoteStrategy\: Quy chu?n t?p h?p giao th?c luu tr? (\save\, \delete\, \indAll\, \search\).
-    - L?p \NoteDBStrategy\: Th?c thi k?t n?i ghi nh?n d? li?u trên MySQL qua JDBC.
-    - L?p \NoteFileStrategy\: Th?c thi luu d? li?u ra File Flat Text (\
-otes.txt\) v?i d?nh d?ng phân tách \id|title|content|typeId\.
-    - L?p \NoteManagement\: Context linh ho?t chuy?n d?i t?ng luu tr? lúc Runtime (\setStrategy\).
-  - **MVC Interface**:
-    - Dashboard danh sách ghi chú, form t?o m?i, c?p nh?t, chi ti?t và nút chuy?n d?i linh ho?t t?ng luu tr? Database/File.
+- **Thu m?c \product-final-exam/\**:
+  - CSDL MySQL \product_db\ (ch?a b?ng \products\ g?m các tru?ng \id\, \
+ame\, \price\, \quantity\). File script du?c luu t?i \product-final-exam/sql/product_db.sql\.
+  - Tri?n khai d?y d? các ch?c nang CRUD chu?n MVC Servlet & JSP:
+    1. Hi?n th? danh sách s?n ph?m theo d?ng b?ng (Formatted Price & Quantity Badge).
+    2. Thêm s?n ph?m m?i qua form nh?p li?u.
+    3. C?p nh?t thông tin s?n ph?m.
+    4. Xóa s?n ph?m kh?i CSDL v?i h?p tho?i xác nh?n JavaScript (\confirm\).
+  - Ðóng gói file bài n?p: \FinalExam.zip\ t?i thu m?c g?c repository.
