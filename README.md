@@ -1,9 +1,13 @@
-# Bài t?p: C?p Nh?t ?ng D?ng Qu?n Lý User (Search by Country & Sort by Name)
+# Bài th?c hành: MySQL JDBC Transaction (User Management)
 
-## N?i dung c?p nh?t:
+## N?i dung th?c hi?n:
 - **Thu m?c d? án \user-management/\**:
+  - **Co s? d? li?u MySQL**: T?o các b?ng m?i \permission\ và \user_permission\ (b?ng trung gian gán quy?n ngu?i dùng).
   - \IUserDAO.java\ & \UserDAO.java\:
-    - B? sung phuong th?c \searchByCountry(String country)\: Tìm ki?m ngu?i dùng theo tên qu?c gia b?ng SQL \WHERE country LIKE ?\.
-    - B? sung phuong th?c \selectAllUsersSortedByName()\: L?y danh sách ngu?i dùng s?p x?p theo th? t? b?ng ch? cái b?ng SQL \ORDER BY name ASC\.
-  - \UserServlet.java\: B? sung di?u hu?ng \ction=search\ và \ction=sort\.
-  - \user/list.jsp\: C?p nh?t giao di?n bao g?m khung tìm ki?m qu?c gia, nút s?p x?p theo tên A-Z và nút hi?n th? l?i t?t c? d? li?u.
+    - Tri?n khai phuong th?c \ddUserTransaction(User user, int[] permissionIds)\.
+    - S? d?ng \connection.setAutoCommit(false)\ d? b?t d?u m?t Transaction.
+    - Th?c thi chèn User vào b?ng \users\ v?i \Statement.RETURN_GENERATED_KEYS\ d? l?y ID sinh t? d?ng.
+    - Duy?t m?ng \permissionIds\ d? chèn các quy?n tuong ?ng vào b?ng \user_permission\.
+    - G?i \connection.commit()\ n?u t?t c? thao tác thành công ho?c \connection.rollback()\ trong kh?i \catch\ n?u có s? c? d? b?o d?m tính toàn v?n d? li?u.
+  - \UserServlet.java\: Ti?p nh?n m?ng \permissions\ g?i t? form t?o m?i và chuy?n d? li?u t?i \ddUserTransaction\.
+  - \user/create.jsp\: B? sung danh sách Checkbox phân quy?n (\Add\, \Edit\, \Delete\, \View\).

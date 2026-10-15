@@ -11,7 +11,9 @@
         .form-group { margin-bottom: 15px; }
         label { font-weight: bold; display: block; margin-bottom: 5px; color: #333; }
         input[type="text"], input[type="email"] { width: 100%; padding: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; }
-        .btn { padding: 12px; background-color: #27ae60; color: white; border: none; cursor: pointer; border-radius: 4px; font-weight: bold; width: 100%; margin-top: 10px; font-size: 16px; }
+        .checkbox-group { display: flex; gap: 15px; margin-top: 5px; flex-wrap: wrap; }
+        .checkbox-group label { font-weight: normal; cursor: pointer; }
+        .btn { padding: 12px; background-color: #27ae60; color: white; border: none; cursor: pointer; border-radius: 4px; font-weight: bold; width: 100%; margin-top: 15px; font-size: 16px; }
         .btn:hover { background-color: #219150; }
         a { display: block; text-align: center; margin-top: 15px; color: #1b2a7a; text-decoration: none; font-weight: bold; }
     </style>
@@ -31,6 +33,15 @@
             <div class="form-group">
                 <label>Qu?c gia:</label>
                 <input type="text" name="country" required />
+            </div>
+            <div class="form-group">
+                <label>Quy?n h?n (Permissions):</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="permissions" value="1"> Thêm (Add)</label>
+                    <label><input type="checkbox" name="permissions" value="2"> S?a (Edit)</label>
+                    <label><input type="checkbox" name="permissions" value="3"> Xoá (Delete)</label>
+                    <label><input type="checkbox" name="permissions" value="4"> Xem (View)</label>
+                </div>
             </div>
             <button type="submit" class="btn">Luu thông tin</button>
         </form>

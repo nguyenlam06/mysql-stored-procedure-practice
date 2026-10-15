@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -147,5 +148,72 @@ public class UserDAO implements IUserDAO {
             e.printStackTrace();
         }
         return users;
+    }
+
+    @Override
+    public void addUserTransaction(User user, int[] permissionIds) throws SQLException {
+        Connection connection = null;
+        PreparedStatement pstmtUser = null;
+        PreparedStatement pstmtAssignment = null;
+        ResultSet rs = null;
+        
+        try {
+            connection = getConnection();
+            
+            // 1. T?t auto-commit d? b?t d?u m?t Transaction
+            connection.setAutoCommit(false);
+            
+            // 2. Chèn d? li?u vào b?ng users và c?u hình l?y l?i ID v?a t?o
+            String insertUserSql = "INSERT INTO users (name, email, country) VALUES (?, ?, ?)";
+            pstmtUser = connection.prepareStatement(insertUserSql, Statement.RETURN_GENERATED_KEYS);
+            pstmtUser.setString(1, user.getName());
+            pstmtUser.setString(2, user.getEmail());
+            pstmtUser.setString(3, user.getCountry());
+            pstmtUser.executeUpdate();
+            
+            // 3. L?y ID c?a user v?a du?c chèn
+            rs = pstmtUser.getGeneratedKeys();
+            int userId = 0;
+            if (rs.next()) {
+                userId = rs.getInt(1);
+            }
+            
+            // 4. Chèn d? li?u vào b?ng user_permission
+            if (permissionIds != null && permissionIds.length > 0) {
+                String insertPermissionSql = "INSERT INTO user_permission (user_id, permission_id) VALUES (?, ?)";
+                pstmtAssignment = connection.prepareStatement(insertPermissionSql);
+                
+                for (int permissionId : permissionIds) {
+                    pstmtAssignment.setInt(1, userId);
+                    pstmtAssignment.setInt(2, permissionId);
+                    pstmtAssignment.executeUpdate();
+                }
+            }
+            
+            // 5. N?u m?i th? thành công, ti?n hành Commit
+            connection.commit();
+            System.out.println("Transaction dã du?c commit thành công!");
+            
+        } catch (SQLException e) {
+            // 6. N?u có l?i x?y ra ? b?t k? dâu, Rollback l?i toàn b? d? li?u
+            try {
+                if (connection != null) {
+                    connection.rollback();
+                    System.out.println("Có l?i x?y ra! Transaction dã b? rollback.");
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            e.printStackTrace();
+        } finally {
+            // 7. D?n d?p tài nguyên và b?t l?i auto-commit
+            if (rs != null) rs.close();
+            if (pstmtUser != null) pstmtUser.close();
+            if (pstmtAssignment != null) pstmtAssignment.close();
+            if (connection != null) {
+                connection.setAutoCommit(true);
+                connection.close();
+            }
+        }
     }
 }
