@@ -1,8 +1,10 @@
-# Bài t?p: Luy?n t?p MySQL JDBC Transaction (Rollback Verification)
+# Bài th?c hành: Ðóng Gói Thu Vi?n Java (.jar Packaging & Dependency System Scope)
 
 ## N?i dung th?c hi?n:
-- **Thu m?c d? án \user-management/\**:
-  - \UserDAO.java\:
-    - C?p nh?t phuong th?c \ddUserTransaction(User user, int[] permissionIds)\ c? tình vi?t sai tên c?t SQL (\invalid_column\) d? t?o ra s? c? \SQLException\.
-    - Th?c nghi?m vi?c ki?m soát Transaction qua kh?i \	ry-catch\: Khi câu l?nh chèn quy?n b? vang l?i, hàm \connection.rollback()\ du?c kích ho?t ngay l?p t?c.
-    - K?t qu? ki?m ch?ng trên CSDL MySQL: B?n ghi ngu?i dùng ? bu?c chèn tru?c dó cung b? hu? b? hoàn toàn, d?m b?o tính toàn v?n d? li?u chu?n ACID.
+- **Thu m?c \math-lib/\ (D? án Thu vi?n)**:
+  - Khai báo \com.codegym.Calculator\ ch?a các hàm static \sum\, \sub\, \mul\, và \divide\.
+  - Ðóng gói thành công file thu vi?n \math-lib-1.0-SNAPSHOT.jar\ b?ng l?nh \mvn clean package\.
+- **Thu m?c \calculator-app/\ (D? án S? d?ng Thu vi?n)**:
+  - Copy file thu vi?n vào thu m?c \lib/math-lib.jar\.
+  - Nhúng dependency vào \pom.xml\ v?i c?u hình \<scope>system</scope>\ và \<systemPath>\/lib/math-lib.jar</systemPath>\.
+  - Th?c thi l?p \com.codegym.Main\ g?i tr?c ti?p các phuong th?c tinh t? file \.jar\ thành công.
