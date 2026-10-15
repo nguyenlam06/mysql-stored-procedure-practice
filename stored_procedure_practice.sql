@@ -1,38 +1,71 @@
--- Ch?n co s? d? li?u
+-- =============================================
+-- 1. BÀI TH?C HÀNH TRIGGER TRONG MYSQL
+-- =============================================
+CREATE DATABASE IF NOT EXISTS company;
+USE company;
+
+-- 1.1. T?o b?ng employees
+DROP TABLE IF EXISTS employees;
+CREATE TABLE employees (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    department VARCHAR(50) NOT NULL,
+    salary DECIMAL(10,2) NOT NULL
+);
+
+-- 1.2. T?o Trigger update_department tru?c khi INSERT
+DELIMITER //
+
+DROP TRIGGER IF EXISTS update_department//
+
+CREATE TRIGGER update_department
+BEFORE INSERT ON employees
+FOR EACH ROW
+BEGIN
+    IF NEW.salary >= 5000 THEN
+        SET NEW.department = 'Management';
+    ELSEIF NEW.salary >= 3000 THEN
+        SET NEW.department = 'Sales';
+    ELSE
+        SET NEW.department = 'Support';
+    END IF;
+END //
+
+DELIMITER ;
+
+-- 1.3. Ki?m tra Trigger b?ng cách chèn d? li?u m?u
+INSERT INTO employees (name, department, salary)
+VALUES 
+    ('John Doe', 'A', 3500),
+    ('Jane Smith', 'A', 2000),
+    ('David Johnson', 'A', 6000);
+
+-- Truy v?n ki?m tra k?t qu? (C?t department s? t? d?ng chuy?n thành Sales, Support, Management)
+SELECT * FROM employees;
+
+
+-- =============================================
+-- 2. BÀI TH?C HÀNH VIEW TRONG MYSQL
+-- =============================================
 USE classicmodels;
 
--- =============================================
--- 1. BÀI TH?C HÀNH VIEW TRONG MYSQL
--- =============================================
-
--- 1.1. T?o View customer_views l?y các c?t basic
 CREATE OR REPLACE VIEW customer_views AS
 SELECT customerNumber, customerName, phone
 FROM customers;
 
--- Truy v?n t? View v?a t?o
-SELECT * FROM customer_views;
-
-
--- 1.2. C?p nh?t View customer_views (thêm các c?t contact và l?c theo city = 'Nantes')
 CREATE OR REPLACE VIEW customer_views AS
 SELECT customerNumber, customerName, contactFirstName, contactLastName, phone
 FROM customers
 WHERE city = 'Nantes';
 
--- Truy v?n ki?m tra l?i View sau khi c?p nh?t
-SELECT * FROM customer_views;
-
-
--- 1.3. Xóa View customer_views
 DROP VIEW IF EXISTS customer_views;
 
 
 -- =============================================
--- 2. BÀI TH?C HÀNH STORED PROCEDURE & PARAMETERS
+-- 3. BÀI TH?C HÀNH STORED PROCEDURE & PARAMETERS
 -- =============================================
+USE classicmodels;
 
--- 2.1. Tham s? lo?i IN: getCusById
 DELIMITER //
 DROP PROCEDURE IF EXISTS getCusById//
 CREATE PROCEDURE getCusById (IN cusNum INT)
@@ -41,7 +74,6 @@ BEGIN
 END //
 DELIMITER ;
 
--- 2.2. Tham s? lo?i OUT: GetCustomersCountByCity
 DELIMITER //
 DROP PROCEDURE IF EXISTS GetCustomersCountByCity//
 CREATE PROCEDURE GetCustomersCountByCity (
@@ -55,7 +87,6 @@ BEGIN
 END //
 DELIMITER ;
 
--- 2.3. Tham s? lo?i INOUT: SetCounter
 DELIMITER //
 DROP PROCEDURE IF EXISTS SetCounter//
 CREATE PROCEDURE SetCounter (
