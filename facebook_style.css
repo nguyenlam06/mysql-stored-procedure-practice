@@ -1,0 +1,218 @@
+/* Reset co b?n */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #f0f2f5;
+    color: #050505;
+    padding-top: 60px; /* Ch?a kho?ng tr?ng cho Fixed Header */
+}
+
+/* 1. FIXED HEADER ? TRÊN CÙNG */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 56px;
+    background-color: #ffffff;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+    z-index: 1000;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo {
+    color: #1877f2;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.search-bar input {
+    background-color: #f0f2f5;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 50px;
+    outline: none;
+    width: 220px;
+}
+
+.header-center {
+    display: flex;
+    gap: 30px;
+    font-weight: bold;
+}
+
+.header-center div {
+    padding: 12px 20px;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+}
+
+.header-center div.active {
+    color: #1877f2;
+    border-bottom-color: #1877f2;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.avatar {
+    width: 36px;
+    height: 36px;
+    background-color: #1877f2;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+/* B? C?C CHÍNH (MAIN CONTAINER) */
+.main-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+}
+
+/* 2. SIDEBARS (LEFT & RIGHT) */
+.sidebar {
+    width: 280px;
+    position: fixed;
+    top: 56px;
+    bottom: 0;
+    padding: 16px;
+    overflow-y: auto;
+}
+
+.left-sidebar {
+    left: 0;
+}
+
+.right-sidebar {
+    right: 0;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.menu-item:hover {
+    background-color: #e4e6eb;
+}
+
+.sidebar-title {
+    color: #65676b;
+    font-weight: bold;
+    margin: 15px 0 10px 10px;
+    font-size: 15px;
+}
+
+/* 3. PH?N N?I DUNG CHÍNH (MAIN CONTENT / FEEDS) */
+.main-content {
+    margin-left: 290px;
+    margin-right: 290px;
+    flex: 1;
+    max-width: 680px;
+    margin-top: 10px;
+}
+
+/* Ðang bài vi?t (Create Post Box) */
+.create-post {
+    background-color: #ffffff;
+    padding: 12px 16px;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    margin-bottom: 16px;
+}
+
+.post-input-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.post-input-container input {
+    width: 100%;
+    background-color: #f0f2f5;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 50px;
+    outline: none;
+}
+
+/* Bài vi?t (Post Card) */
+.post-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    margin-bottom: 16px;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.post-author {
+    font-weight: bold;
+}
+
+.post-time {
+    font-size: 12px;
+    color: #65676b;
+}
+
+.post-content {
+    font-size: 15px;
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.post-actions {
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid #e4e6eb;
+    padding-top: 8px;
+    color: #65676b;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.post-actions div:hover {
+    color: #1877f2;
+}

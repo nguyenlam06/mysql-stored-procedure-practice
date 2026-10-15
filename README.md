@@ -1,12 +1,11 @@
-# Bài t?p: T?o Layout v?i các th? HTML5 và CSS
+# Bài t?p: T?o Giao Di?n Gi?n Lu?c C?a Trang Ch? Facebook
 
 ## N?i dung th?c hi?n:
-- **Xây d?ng b? c?c chu?n Semantic HTML5 (\html5_layout.html\)**:
-  - \<header>\: Ð?u trang ch?a tiêu d? và mô t?.
-  - \<nav>\: Thanh menu di?u hu?ng v?i danh sách \<ul>\ và \<li>\.
-  - \<section>\ & \<article>\: Kh?i n?i dung ch?a các bài vi?t.
-  - \<aside>\: Thanh bên (Sidebar) ch?a liên k?t ph?.
-  - \<footer>\: Chân trang hi?n th? thông tin b?n quy?n.
-- **Trang trí và phân c?t CSS Flexbox (\layout_style.css\)**:
-  - S? d?ng \display: flex\ chia b? c?c trang web thành 2 c?t gi?a \section\ và \side\.
-  - Ð?nh d?ng màu s?c, kho?ng cách (\padding\, \margin\) và hi?u ?ng di chu?t (\:hover\) chuyên nghi?p.
+- **T?o Fixed Header ? trên cùng (\acebook_style.css\ & \acebook_layout.html\)**:
+  - S? d?ng \position: fixed\, \	op: 0\, \z-index: 1000\ t?o thanh header luôn c? d?nh.
+  - Phân chia 3 vùng (Logo/Search, Navigation Tabs, User Profile).
+- **T?o Sidebars hai bên (Left & Right Sidebar)**:
+  - S? d?ng \position: fixed\ gi? c? d?nh khung menu l?i t?t bên trái và danh sách liên h?/tài tr? bên ph?i.
+- **T?o ph?n N?i dung chính (Main Content / Feeds)**:
+  - Can l? \margin-left\ và \margin-right\ v?a v?n gi?a 2 sidebars.
+  - Thi?t k? các khung card bài dang (\create-post\, \post-card\) d?y d? thông tin avatar, tác gi?, n?i dung và các nút tuong tác (Thích, Bình lu?n, Chia s?).
