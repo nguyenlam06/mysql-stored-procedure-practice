@@ -2,6 +2,7 @@ package com.codegym.dao;
 
 import com.codegym.model.User;
 import java.math.BigDecimal;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -84,46 +85,17 @@ public class UserDAO implements IUserDAO {
 
     @Override
     public List<User> selectAllUsers() {
-        List<User> users = new ArrayList<>();
-        try (Connection connection = getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_USERS)) {
-            ResultSet rs = preparedStatement.executeQuery();
-            while (rs.next()) {
-                int id = rs.getInt("id");
-                String name = rs.getString("name");
-                String email = rs.getString("email");
-                String country = rs.getString("country");
-                users.add(new User(id, name, email, country));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return users;
+        return getUserByProcedure(); // M?c d?nh chuy?n sang g?i Stored Procedure get_all_users()
     }
 
     @Override
     public boolean deleteUser(int id) throws Exception {
-        boolean rowDeleted;
-        try (Connection connection = getConnection();
-             PreparedStatement statement = connection.prepareStatement(DELETE_USERS_SQL)) {
-            statement.setInt(1, id);
-            rowDeleted = statement.executeUpdate() > 0;
-        }
-        return rowDeleted;
+        return deleteUserProcedure(id); // G?i Stored Procedure delete_user()
     }
 
     @Override
     public boolean updateUser(User user) throws Exception {
-        boolean rowUpdated;
-        try (Connection connection = getConnection();
-             PreparedStatement statement = connection.prepareStatement(UPDATE_USERS_SQL)) {
-            statement.setString(1, user.getName());
-            statement.setString(2, user.getEmail());
-            statement.setString(3, user.getCountry());
-            statement.setInt(4, user.getId());
-            rowUpdated = statement.executeUpdate() > 0;
-        }
-        return rowUpdated;
+        return updateUserProcedure(user); // G?i Stored Procedure update_user()
     }
 
     @Override
@@ -277,7 +249,6 @@ public class UserDAO implements IUserDAO {
             psInsert.setTimestamp(3, Timestamp.valueOf(LocalDateTime.now()));
             psInsert.execute();
 
-            // S?a l?i index gán tham s? chính xác
             psUpdate.setBigDecimal(1, new BigDecimal(999.99));
             psUpdate.setString(2, "Quynh");
             psUpdate.execute();
@@ -291,5 +262,60 @@ public class UserDAO implements IUserDAO {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    // ==========================================
+    // TH?C THI THAO TÁC QUA CALLABLE STATEMENT
+    // ==========================================
+
+    @Override
+    public List<User> getUserByProcedure() {
+        List<User> users = new ArrayList<>();
+        String query = "{CALL get_all_users()}";
+        try (Connection connection = getConnection();
+             CallableStatement callableStatement = connection.prepareCall(query);
+             ResultSet rs = callableStatement.executeQuery()) {
+            
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String email = rs.getString("email");
+                String country = rs.getString("country");
+                users.add(new User(id, name, email, country));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return users;
+    }
+
+    @Override
+    public boolean updateUserProcedure(User user) throws SQLException {
+        boolean rowUpdated;
+        String query = "{CALL update_user(?, ?, ?, ?)}";
+        try (Connection connection = getConnection();
+             CallableStatement callableStatement = connection.prepareCall(query)) {
+            
+            callableStatement.setInt(1, user.getId());
+            callableStatement.setString(2, user.getName());
+            callableStatement.setString(3, user.getEmail());
+            callableStatement.setString(4, user.getCountry());
+            
+            rowUpdated = callableStatement.executeUpdate() > 0;
+        }
+        return rowUpdated;
+    }
+
+    @Override
+    public boolean deleteUserProcedure(int id) throws SQLException {
+        boolean rowDeleted;
+        String query = "{CALL delete_user(?)}";
+        try (Connection connection = getConnection();
+             CallableStatement callableStatement = connection.prepareCall(query)) {
+            
+            callableStatement.setInt(1, id);
+            rowDeleted = callableStatement.executeUpdate() > 0;
+        }
+        return rowDeleted;
     }
 }
