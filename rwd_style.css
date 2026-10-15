@@ -1,0 +1,150 @@
+/* Reset co b?n */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    padding: 15px;
+    color: #333;
+}
+
+/* Khung b?c ngoài (Wrapper) */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* 1. HEADER */
+.header {
+    background-color: #3498db;
+    color: white;
+    padding: 25px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 6px;
+}
+
+/* 2. NAVIGATION (NAVBAR) */
+.nav {
+    background-color: #2c3e50;
+    border-radius: 6px;
+}
+
+.nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.nav ul li {
+    flex: 1;
+    text-align: center;
+    min-width: 120px;
+}
+
+.nav ul li a {
+    display: block;
+    color: white;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav ul li a:hover {
+    background-color: #1abc9c;
+}
+
+/* 3. KH?I N?I DUNG CHÍNH (MAIN CONTENT AREA) */
+.main-wrapper {
+    display: flex;
+    gap: 15px;
+}
+
+/* C?t trái (Sidebar Left) */
+.sidebar-left {
+    flex: 1;
+    background-color: #e74c3c;
+    color: white;
+    padding: 20px;
+    border-radius: 6px;
+    min-height: 250px;
+}
+
+/* C?t gi?a (N?i dung chính - Content) */
+.content {
+    flex: 2;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    min-height: 250px;
+}
+
+/* C?t ph?i (Sidebar Right) */
+.sidebar-right {
+    flex: 1;
+    background-color: #9b59b6;
+    color: white;
+    padding: 20px;
+    border-radius: 6px;
+    min-height: 250px;
+}
+
+/* 4. FOOTER */
+.footer {
+    background-color: #34495e;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (MEDIA QUERIES)
+   ========================================================================== */
+
+/* Tablet (Màn hình du?i 768px): C?t gi?a m? r?ng, 2 Sidebar chuy?n thành hàng bên du?i */
+@media screen and (max-width: 768px) {
+    .main-wrapper {
+        flex-wrap: wrap;
+    }
+
+    .content {
+        flex: 100%; /* N?i dung chính chi?m full 100% chi?u r?ng */
+        order: 1;
+    }
+
+    .sidebar-left {
+        flex: 1;
+        order: 2;
+    }
+
+    .sidebar-right {
+        flex: 1;
+        order: 3;
+    }
+}
+
+/* Mobile (Màn hình du?i 480px): X?p ch?ng t?t c? các kh?i thành 1 c?t duy nh?t */
+@media screen and (max-width: 480px) {
+    .nav ul {
+        flex-direction: column;
+    }
+
+    .main-wrapper {
+        flex-direction: column;
+    }
+
+    .sidebar-left, .content, .sidebar-right {
+        width: 100%;
+    }
+}
